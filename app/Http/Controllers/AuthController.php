@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $user = DB::table('usuarios')
+        $user = DB::table('usuarios') //laravel lo convierte internamemte en "SELECT * FROM usuarios WHERE usuario = ? AND clave = ?LIMIT 1;"
             ->where('usuario', $request->usuario)
             ->where('clave', $request->password)
             ->first();
@@ -40,5 +40,21 @@ class AuthController extends Controller
         }
 
         return back()->with('error', 'Usuario o contraseña incorrectos');
+    }
+
+    public function showRegistro()
+    {
+        return view('registro');
+    }
+
+    public function registro(Request $request)
+    {
+        DB::table('usuarios')->insert([
+            'usuario' => $request->usuario,
+            'clave' => $request->password,
+            'rol' => 'alumno'
+        ]);
+
+        return redirect('/login')->with('success', 'Usuario creado correctamente');
     }
 }

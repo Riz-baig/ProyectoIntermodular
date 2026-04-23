@@ -16,6 +16,8 @@ Route::post('/triaje', [TriajeController::class, 'guardar']);//triaje
 Route::get('/atencion/{id}', [AtencionController::class, 'ver']);//atencion
 Route::post('/atencion', [AtencionController::class, 'guardar']);//atencion
 Route::get('/seguimiento', [PanelController::class, 'index']); //panel de control para prof
+Route::get('/registro', [AuthController::class, 'showRegistro']);
+Route::post('/registro', [AuthController::class, 'registro']);
 
 
 
