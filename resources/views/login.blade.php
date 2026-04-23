@@ -10,7 +10,6 @@
     
 </head>
 <body>
-// redeploy trigger
 <div class="cajaLogin">
     <h1>Sistema de Triaje</h1>
     <h2>Iniciar Sesión</h2>
