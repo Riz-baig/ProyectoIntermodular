@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libzip-dev \
-    && docker-php-ext-install zip
+    libpq-dev \
+    && docker-php-ext-install zip pdo pdo_pgsql
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -22,4 +23,4 @@ RUN composer install
 EXPOSE 10000
 
 # Arrancar servidor + migraciones
-CMD php artisan config:clear && php artisan migrate --force || true && php -S 0.0.0.0:10000 -t public
+CMD php artisan migrate --force && php -S 0.0.0.0:10000 -t public
