@@ -23,4 +23,4 @@ RUN composer install
 EXPOSE 10000
 
 # Arrancar servidor + migraciones
-CMD php artisan migrate --force && php -S 0.0.0.0:${PORT} -t public
+CMD ["sh", "-c", "php artisan migrate --force && php -S 0.0.0.0:8080 -t public"]
