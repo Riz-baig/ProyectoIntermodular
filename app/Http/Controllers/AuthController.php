@@ -24,9 +24,10 @@ class AuthController extends Controller
     }
 
     
-
+    
     public function login(Request $request)
     {
+        dd($request->all());
         $user = DB::table('users')
             ->where('email', $request->email)
             ->first();
@@ -56,12 +57,13 @@ class AuthController extends Controller
 
     public function registro(Request $request)
     {
-        DB::table('usuarios')->insert([
-            'usuario' => $request->usuario,
-            'clave' => $request->password,
+        DB::table('users')->insert([
+            'name' => $request->usuario,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             'rol' => 'alumno'
         ]);
-    
+
         return redirect('/login')->with('success', 'Usuario creado correctamente');
     }
 }
