@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Atención - Sistema de Triaje</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/atencion.css') }}">
+    @vite(['resources/css/app.css', 'resources/css/atencion.css', 'resources/js/app.js'])
 </head>
 <body>
 
