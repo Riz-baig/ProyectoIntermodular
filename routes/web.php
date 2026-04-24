@@ -25,13 +25,13 @@ Route::post('/registro', [AuthController::class, 'registro']);
 
 
 //sesion profesor
-Route::get('/panel', function () { //dirige a la ruta del panel
+Route::get('/panel', function () {
 
-    if (!session()->has('usuario')) { // so no ha iniiado sesion, no deja entrar
+    if (!session()->has('usuario')) {
         return redirect('/login');
     }
 
-    return view('profesor');
+    return "FUNCIONA PANEL"; // 👈 prueba
 });
 
 
