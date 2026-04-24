@@ -15,7 +15,7 @@
         @endif
         <form method="POST" action="/login">
             @csrf
-            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Contraseña" required>
             <button type="submit">Entrar</button>
         </form>
