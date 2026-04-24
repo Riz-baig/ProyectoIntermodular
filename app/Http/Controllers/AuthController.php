@@ -28,7 +28,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $user = DB::table('users')
-            ->where('email', $request->usuario) // o cambia el input a email
+            ->where('email', $request->email)
             ->first();
     
         if (!$user) {
