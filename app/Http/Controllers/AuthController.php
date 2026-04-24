@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -22,24 +23,30 @@ class AuthController extends Controller
         return view('login');
     }
 
+    
+
     public function login(Request $request)
     {
-        $user = DB::table('usuarios') //laravel lo convierte internamemte en "SELECT * FROM usuarios WHERE usuario = ? AND clave = ?LIMIT 1;"
-            ->where('usuario', $request->usuario)
-            ->where('clave', $request->password)
+        $user = DB::table('users')
+            ->where('email', $request->usuario) // o cambia el input a email
             ->first();
-
-        if ($user) {
+    
+        if (!$user) {
+            return back()->with('error', 'Usuario no encontrado');
+        }
+    
+        if (Hash::check($request->password, $user->password)) {
+    
             session(['usuario' => $user]);
-
+    
             if ($user->rol == 'profesor') {
                 return redirect('/panel');
             } else {
                 return redirect('/');
             }
         }
-
-        return back()->with('error', 'Usuario o contraseña incorrectos');
+    
+        return back()->with('error', 'Contraseña incorrecta');
     }
 
     public function showRegistro()
@@ -54,7 +61,7 @@ class AuthController extends Controller
             'clave' => $request->password,
             'rol' => 'alumno'
         ]);
-
+    
         return redirect('/login')->with('success', 'Usuario creado correctamente');
     }
 }
