@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>Triaje - Sistema de Triaje</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/triaje.css') }}">
-    
+    @vite(['resources/css/app.css', 'resources/css/triaje.css', 'resources/js/app.js'])
+
 </head>
 <body>
 

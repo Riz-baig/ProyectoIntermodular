@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Inicio - Triaje</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/panel.css') }}">
+    @vite(['resources/css/app.css', 'resources/css/panel.css', 'resources/js/app.js'])
 </head>
 <body>
 

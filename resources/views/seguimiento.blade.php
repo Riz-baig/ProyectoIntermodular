@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Panel de seguimiento</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
