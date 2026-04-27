@@ -1,6 +1,15 @@
 {
+  "resources/css/admision.css": {
+    "file": "assets/admision-CKo6lNaU.css",
+    "src": "resources/css/admision.css",
+    "isEntry": true,
+    "name": "admision",
+    "names": [
+      "admision.css"
+    ]
+  },
   "resources/css/app.css": {
-    "file": "assets/app-CPaEV1zU.css",
+    "file": "assets/app-DcYJzBe7.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -8,13 +17,40 @@
       "app.css"
     ]
   },
+  "resources/css/atencion.css": {
+    "file": "assets/atencion-DR8FNmj-.css",
+    "src": "resources/css/atencion.css",
+    "isEntry": true,
+    "name": "atencion",
+    "names": [
+      "atencion.css"
+    ]
+  },
+  "resources/css/panel.css": {
+    "file": "assets/panel-DhgJn6iR.css",
+    "src": "resources/css/panel.css",
+    "isEntry": true,
+    "name": "panel",
+    "names": [
+      "panel.css"
+    ]
+  },
+  "resources/css/triaje.css": {
+    "file": "assets/triaje-BTBLtV4P.css",
+    "src": "resources/css/triaje.css",
+    "isEntry": true,
+    "name": "triaje",
+    "names": [
+      "triaje.css"
+    ]
+  },
   "resources/js/app.js": {
-    "file": "assets/app-B-VYRvtM.js",
+    "file": "assets/app-CceYL8BG.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-CPaEV1zU.css"
+      "assets/app-DcYJzBe7.css"
     ]
   }
 }

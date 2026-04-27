@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 @import './login.css';
+@import './panel.css';
+@import './login.css';
+@import './triaje.css';
+@import './admision.css';
+@import './atencion.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

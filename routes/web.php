@@ -16,8 +16,8 @@ Route::post('/triaje', [TriajeController::class, 'guardar']);//triaje
 Route::get('/atencion/{id}', [AtencionController::class, 'ver']);//atencion
 Route::post('/atencion', [AtencionController::class, 'guardar']);//atencion
 Route::get('/seguimiento', [PanelController::class, 'index']); //panel de control para prof
-Route::get('/registro', [AuthController::class, 'showRegistro']);
-Route::post('/registro', [AuthController::class, 'registro']);
+Route::get('/registro', [AuthController::class, 'showRegistro'])->name('registro');
+Route::post('/registro', [AuthController::class, 'registro'])->name('registro.post');//registrar nuevos alumnos
 
 
 
@@ -25,13 +25,13 @@ Route::post('/registro', [AuthController::class, 'registro']);
 
 
 //sesion profesor
-Route::get('/panel', function () {
+Route::get('/panel', function () { //dirige a la ruta del panel
 
-    if (!session()->has('usuario')) {
+    if (!session()->has('usuario')) { // so no ha iniiado sesion, no deja entrar
         return redirect('/login');
     }
 
-    return "FUNCIONA PANEL"; // 👈 prueba
+    return view('profesor');
 });
 
 

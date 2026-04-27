@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Inicio - Triaje</title>
 
-    @vite(['resources/css/app.css', 'resources/css/panel.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
 <div class="container">
 
-    <h1>Bienvenido, {{ session('usuario')->usuario }}</h1>
+    <h1>Bienvenido, {{ session('usuario')->name }}</h1>
     <p>Selecciona una opción del sistema</p>
 
     <div class="menu">
