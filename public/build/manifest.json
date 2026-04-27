@@ -9,7 +9,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-DcYJzBe7.css",
+    "file": "assets/app-DitJVXzI.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -27,7 +27,7 @@
     ]
   },
   "resources/css/panel.css": {
-    "file": "assets/panel-DhgJn6iR.css",
+    "file": "assets/panel-CHJK_pbn.css",
     "src": "resources/css/panel.css",
     "isEntry": true,
     "name": "panel",
@@ -45,12 +45,12 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CceYL8BG.js",
+    "file": "assets/app-DDZF-pVe.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DcYJzBe7.css"
+      "assets/app-DitJVXzI.css"
     ]
   }
 }

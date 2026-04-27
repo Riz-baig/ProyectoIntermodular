@@ -1,7 +1,6 @@
-@import 'tailwindcss';
+/*@import 'tailwindcss';*/
 @import './login.css';
 @import './panel.css';
-@import './login.css';
 @import './triaje.css';
 @import './admision.css';
 @import './atencion.css';

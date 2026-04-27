@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Panel de Control</title>
 
-    @vite(['resources/css/app.css', 'resources/css/panel.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 <div class="container">
 
     <div class="cabecera">
         <h1>Panel de Profesor</h1>
-        <p>Bienvenido, {{ session('usuario')->usuario }}</p>
+        <p>Bienvenido, {{ session('usuario')->name }}</p>
     </div>
 
     <h2>Gestión del sistema</h2>
