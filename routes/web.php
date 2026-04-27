@@ -7,6 +7,8 @@ use App\Http\Controllers\AdmisionController;//admision
 use App\Http\Controllers\TriajeController;//triaje
 use App\Http\Controllers\AtencionController;//atencion
 use App\Http\Controllers\PanelController;//panel de control para profesor
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/login', [AuthController::class, 'showLogin']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -20,6 +22,19 @@ Route::get('/registro', [AuthController::class, 'showRegistro'])->name('registro
 Route::post('/registro', [AuthController::class, 'registro'])->name('registro.post');//registrar nuevos alumnos
 
 
+
+Route::get('/crear-profesor', function () {
+    DB::table('users')->updateOrInsert(
+        ['email' => 'profesor@correo.com'],
+        [
+            'name' => 'profesor1',
+            'password' => Hash::make('123456'),
+            'rol' => 'profesor'
+        ]
+    );
+
+    return "Profesor creado correctamente";
+});
 
 
 
