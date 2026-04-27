@@ -61,7 +61,7 @@ class AuthController extends Controller
             'name' => $request->usuario,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'rol' => 'alumno'
+            'rol' => $request->rol //recibe el rol
         ]);
 
         return redirect('/login')->with('success', 'Usuario creado correctamente');

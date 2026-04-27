@@ -7,8 +7,8 @@ use App\Http\Controllers\AdmisionController;//admision
 use App\Http\Controllers\TriajeController;//triaje
 use App\Http\Controllers\AtencionController;//atencion
 use App\Http\Controllers\PanelController;//panel de control para profesor
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
+/*use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;*/ //es para crear profesor
 
 Route::get('/login', [AuthController::class, 'showLogin']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -22,7 +22,7 @@ Route::get('/registro', [AuthController::class, 'showRegistro'])->name('registro
 Route::post('/registro', [AuthController::class, 'registro'])->name('registro.post');//registrar nuevos alumnos
 
 
-
+/*
 Route::get('/crear-profesor', function () {
     DB::table('users')->updateOrInsert(
         ['email' => 'profesor@correo.com'],
@@ -34,7 +34,7 @@ Route::get('/crear-profesor', function () {
     );
 
     return "Profesor creado correctamente";
-});
+});*/  //es para crear profesor, desde sql no admitia hash.
 
 
 
