@@ -39,8 +39,8 @@
         </a>
 
         <a href="/registro" class="card">
-            <h3>Registrar alumno</h3>
-            <p>Dar de alta nuevos alumnos en el sistema</p>
+            <h3>Registrar Usuarios</h3>
+            <p>Dar de alta nuevos usuarios en el sistema</p>
         </a>
 
     </div>

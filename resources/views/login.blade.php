@@ -21,10 +21,10 @@
         </form>
         <div class="linkRegistro">
             ¿Eres alumno y no tienes cuenta?<br>
-            <a href="/registro">Registrarse como nuevo alumno</a>
+            Contacta con tu Profesor
         </div>
         <p style="margin-top: 30px; font-size: 0.9em; color: #95a5a6;">
-            Solo la profesora puede crear cuentas de profesor.
+            Solo la profesora puede crear cuentas.
         </p>
     </div>
 </body>
