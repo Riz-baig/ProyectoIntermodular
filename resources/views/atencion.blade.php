@@ -7,6 +7,7 @@
     @vite(['resources/css/app.css', 'resources/css/atencion.css', 'resources/js/app.js'])
 </head>
 <body>
+    //comentario de prueba
 
 <div class="contenedor">
 
