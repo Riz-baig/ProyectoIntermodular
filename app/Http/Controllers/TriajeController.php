@@ -24,6 +24,8 @@ class TriajeController extends Controller
 
                 'paciente_id' => $paciente_id,
 
+                'usuario_id' => session('usuario')->id,
+
                 'hora_triaje' => $request->hora_triaje ?: null,
 
                 'tension_sistolica' => $request->tension_sistolica ?: null,
