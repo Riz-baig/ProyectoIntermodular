@@ -26,7 +26,9 @@ class TriajeController extends Controller
 
                 'usuario_id' => session('usuario')->id,
 
-                'hora_triaje' => $request->hora_triaje ?: null,
+                'hora_triaje' => $request->hora_triaje 
+                    ? str_replace('T', ' ', $request->hora_triaje) . ':00' 
+                    : null,
 
                 'tension_sistolica' => $request->tension_sistolica ?: null,
                 'tension_diastolica' => $request->tension_diastolica ?: null,
@@ -52,7 +54,7 @@ class TriajeController extends Controller
             return redirect('/atencion/' . $request->paciente_id);
 
         } catch (\Exception $e) {
-            return back()->with('error', true);
+            return $e->getMessage();
         }
     }
 }
