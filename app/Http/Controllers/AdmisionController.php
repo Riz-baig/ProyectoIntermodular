@@ -20,7 +20,8 @@ class AdmisionController extends Controller
             'motivo_consulta' => $request->motivo_consulta ?: null,
         ]);
         
-        return redirect('/triaje/' . $id);
+        //return redirect('/triaje/' . $id);
+        return "Paciente creado con ID: " . $id;
 
         } catch (\Exception $e) {
             return back()->with('error', true);
