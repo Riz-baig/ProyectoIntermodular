@@ -18,10 +18,8 @@ class AdmisionController extends Controller
             'telefono' => $request->telefono ?: null,
             'alergias' => $request->alergias ?: null,
             'motivo_consulta' => $request->motivo_consulta ?: null,
-            'alumno_id' => auth()->id(), //esto coge automáticamente el id del usuario que está logueado y lo guarda en el paciente.
-        ]);
-
-        dd(auth()->id()); // línea temporal para depurar
+            'alumno_id' => session('usuario') ? session('usuario')->id : null, // Asigna el ID del alumno desde la sesión, o null si no hay sesión
+        ]); 
         
         return redirect('/triaje/' . $id);
 
