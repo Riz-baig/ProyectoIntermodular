@@ -54,6 +54,8 @@
 
             <textarea name="tratamiento" rows="5"></textarea>
 
+            <h3>Plan de seguimiento</h3>
+
             <textarea name="plan_seguimiento" rows="4"></textarea>
         </section>
 
