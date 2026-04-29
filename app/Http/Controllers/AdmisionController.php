@@ -20,6 +20,8 @@ class AdmisionController extends Controller
             'motivo_consulta' => $request->motivo_consulta ?: null,
             'alumno_id' => auth()->id(), //esto coge automáticamente el id del usuario que está logueado y lo guarda en el paciente.
         ]);
+
+        dd(auth()->id()); // línea temporal para depurar
         
         return redirect('/triaje/' . $id);
 
