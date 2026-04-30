@@ -19,7 +19,9 @@ Route::get('/atencion/{id}', [AtencionController::class, 'ver']);//atencion
 Route::post('/atencion', [AtencionController::class, 'guardar']);//atencion
 Route::get('/seguimiento', [PanelController::class, 'index']); //panel de control para prof
 Route::get('/seguimiento/paciente/{id}', [PanelController::class, 'verPaciente']); //detalles paciente para profesor
-Route::get('/registro', [AuthController::class, 'showRegistro'])->name('registro');
+Route::get('/seguimiento/feedback/{id}', [PanelController::class, 'verFeedback']); //ver feedback del profesor para el alumno
+Route::post('/seguimiento/feedback', [PanelController::class, 'guardarFeedback']);// guardar feedback del profesor para el alumno
+Route::get('/registro', [AuthController::class, 'showRegistro'])->name('registro');//vista para registrar nuevos alumnos
 Route::post('/registro', [AuthController::class, 'registro'])->name('registro.post');//registrar nuevos alumnos
 
 
