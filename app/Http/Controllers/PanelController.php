@@ -36,15 +36,38 @@ class PanelController extends Controller
         }
         return view('seguimiento', compact('pacientes', 'usuarios', 'usuarioSeleccionado'));
     }
-    
+
     public function verPaciente($id)
     {
         $paciente = DB::table('pacientes')->where('id', $id)->first();
-
         $triaje = DB::table('triajes')->where('paciente_id', $id)->first();
-
         $atencion = DB::table('atenciones')->where('paciente_id', $id)->first();
+        $alumno = DB::table('users')->where('id', $paciente->alumno_id)->first();
 
-        return view('detalle_paciente', compact('paciente', 'triaje', 'atencion'));
+        return view('detalle_paciente', compact('paciente', 'triaje', 'atencion', 'alumno'));
+    }
+
+    public function verFeedback($id)
+    {
+        $paciente = DB::table('pacientes')->where('id', $id)->first();
+        $triaje = DB::table('triajes')->where('paciente_id', $id)->first();
+        $atencion = DB::table('atenciones')->where('paciente_id', $id)->first();
+        $alumno = DB::table('users')->where('id', $paciente->alumno_id)->first();
+
+        return view('feedback', compact('paciente', 'triaje', 'atencion', 'alumno'));
+    }
+
+    public function guardarFeedback(Request $request)
+    {
+        try {
+            DB::table('atenciones')
+                ->where('paciente_id', $request->paciente_id)
+                ->update(['feedback' => $request->feedback]);
+
+            return redirect('/seguimiento')->with('ok', 'Feedback enviado correctamente');
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'No se pudo enviar el feedback');
+        }
     }
 }
