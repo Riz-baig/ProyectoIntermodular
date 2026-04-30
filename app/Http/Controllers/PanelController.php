@@ -36,4 +36,15 @@ class PanelController extends Controller
         }
         return view('seguimiento', compact('pacientes', 'usuarios', 'usuarioSeleccionado'));
     }
+    
+    public function verPaciente($id)
+    {
+        $paciente = DB::table('pacientes')->where('id', $id)->first();
+
+        $triaje = DB::table('triajes')->where('paciente_id', $id)->first();
+
+        $atencion = DB::table('atenciones')->where('paciente_id', $id)->first();
+
+        return view('detalle_paciente', compact('paciente', 'triaje', 'atencion'));
+    }
 }
