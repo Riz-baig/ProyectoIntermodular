@@ -43,4 +43,28 @@ class AtencionController extends Controller
             return back()->with('error', true);
         }
     }
+
+    public function misFeedbacks()
+    {
+        $alumno_id = session('usuario')->id;
+
+        $pacientes = DB::table('pacientes')
+            ->join('atenciones', 'pacientes.id', '=', 'atenciones.paciente_id')
+            ->where('pacientes.alumno_id', $alumno_id)
+            ->whereNotNull('atenciones.feedback')
+            ->where('atenciones.feedback', '!=', '')
+            ->select('pacientes.*', 'atenciones.feedback')
+            ->get();
+
+        return view('mis_feedbacks', compact('pacientes'));
+    }
+
+    public function verFeedback($id)
+    {
+        $paciente = DB::table('pacientes')->where('id', $id)->first();
+        $triaje = DB::table('triajes')->where('paciente_id', $id)->first();
+        $atencion = DB::table('atenciones')->where('paciente_id', $id)->first();
+
+        return view('ver_feedback', compact('paciente', 'triaje', 'atencion'));
+}
 }
