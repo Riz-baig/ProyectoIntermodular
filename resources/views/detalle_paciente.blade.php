@@ -11,7 +11,7 @@
 
     <div class="cabecera">
         <h1>Detalle del paciente</h1>
-        <p>Información completa registrada por el alumno</p>
+        <p>Información completa registrada por {{ $alumno->name ?? 'el alumno' }}</p>
     </div>
 
     {{-- Datos del paciente --}}
