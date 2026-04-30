@@ -45,6 +45,7 @@
                         <th>Categoría</th>
                         <th>Estado</th>
                         <th>Hora</th>
+                        <th>Información</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,6 +65,9 @@
                         </td>
                         <td>
                             {{ $p->hora_triaje ? date('H:i', strtotime($p->hora_triaje)) : '-' }}
+                        </td>
+                        <td>  
+                            <a href="/seguimiento/paciente/{{ $p->id }}" class="btn guardar" style="font-size:13px; padding:6px 10px;">Información</a>
                         </td>
                     </tr>
                     @endforeach
