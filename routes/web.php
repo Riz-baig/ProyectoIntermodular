@@ -23,7 +23,8 @@ Route::get('/seguimiento/feedback/{id}', [PanelController::class, 'verFeedback']
 Route::post('/seguimiento/feedback', [PanelController::class, 'guardarFeedback']);// guardar feedback del profesor para el alumno
 Route::get('/registro', [AuthController::class, 'showRegistro'])->name('registro');//vista para registrar nuevos alumnos
 Route::post('/registro', [AuthController::class, 'registro'])->name('registro.post');//registrar nuevos alumnos
-
+Route::get('/mis-feedbacks', [AtencionController::class, 'misFeedbacks']); //vista para que el alumno vea los feedbacks de sus pacientes
+Route::get('/mis-feedbacks/{id}', [AtencionController::class, 'verFeedback']); //vista para que el alumno vea el detalle de un feedback específico de uno de sus pacientes
 
 /*
 Route::get('/crear-profesor', function () {
