@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Triaje - Sistema de Triaje</title>
@@ -7,105 +8,128 @@
     @vite(['resources/css/app.css', 'resources/css/triaje.css', 'resources/js/app.js'])
 
 </head>
-<body>
 
-<div class="contenedor">
-
-    <div class="cabecera">
-        <h1>Evaluación de Triaje</h1>
-        <p>Clasifique al paciente según la gravedad de su condición</p>
-    </div>
-
-    {{-- Mensajes --}}
-    @if(session('ok'))
-        <p class="mensaje exito">Triaje guardado correctamente.</p>
-    @endif
-
-    @if(session('error'))
-        <p class="mensaje error">No se pudo guardar el triaje.</p>
-    @endif
-
-    <div class="tarjeta-paciente">
-        <div class="info-paciente">
-            <h2>Datos del paciente</h2>
-            <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
-            <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
-            <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
-            <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
-        </div>
-
-        <div class="alerta-alergias">
-            <h3>Alergias</h3>
-            <p>Sin alergias conocidas</p>
-        </div>
-    </div>
-
-    <form action="/triaje" method="POST" class="formulario">
-        @csrf
-
-        <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
-        <section class="bloque">
-            <h3>Constantes vitales</h3>
-
-            <div class="grid-dos">
-                <input type="number" name="tension_sistolica" placeholder="TA Sistólica">
-                <input type="number" name="tension_diastolica" placeholder="TA Diastólica">
-                <input type="number" name="frecuencia_cardiaca" placeholder="Frecuencia cardíaca">
-                <input type="number" name="frecuencia_respiratoria" placeholder="Frecuencia respiratoria">
-                <input type="number" step="0.1" name="temperatura" placeholder="Temperatura">
-                <input type="number" name="saturacion_oxigeno" placeholder="Sat O2">
-                <input type="number" name="glasgow" min="3" max="15" placeholder="Glasgow">
-                <input type="number" name="eva" min="0" max="10" placeholder="Dolor EVA">
-                <input type="number" name="glucemia" placeholder="Glucemia">
-                <input type="number" step="0.01" name="peso" placeholder="Peso">
-                <input type="number" step="0.01" name="talla" placeholder="Talla">
-                <input type="datetime-local" name="hora_triaje">
-            </div>
-        </section>
-
-        <section class="bloque">
-            <h3>Observaciones clínicas</h3>
-
-            <label><input type="checkbox" name="vomitos"> Vómitos</label>
-            <label><input type="checkbox" name="deposiciones"> Deposiciones</label>
-            <label><input type="checkbox" name="diuresis"> Diuresis</label>
-
-            <textarea name="motivo_consulta" placeholder="Motivo de consulta"></textarea>
-            <textarea name="observaciones" placeholder="Observaciones"></textarea>
-        </section>
-
-        <section class="bloque">
-            <h3>Clasificación</h3>
-
-            <select name="categoria" required>
-                <option value="">Seleccione categoría</option>
-                <option value="Rojo">Rojo</option>
-                <option value="Naranja">Naranja</option>
-                <option value="Amarillo">Amarillo</option>
-                <option value="Verde">Verde</option>
-                <option value="Azul">Azul</option>
-            </select>
-
-            <select name="flujo" required>
-                <option value="">Seleccione flujo</option>
-                <option value="RCP">Box RCP</option>
-                <option value="Nivel I">Nivel I</option>
-                <option value="Nivel II">Nivel II</option>
-                <option value="Traumatologia">Traumatología</option>
-                <option value="Obstetrica">Obstétrica</option>
-                <option value="Pediatria">Pediatría</option>
-                <option value="Psiquiatria">Psiquiatría</option>
-            </select>
-        </section>
-
-        <div class="acciones">
-            <a href="/" class="btn volver">Volver</a>
-            <button type="submit" class="btn guardar">Confirmar triaje</button>
-        </div>
-
-    </form>
-
+<div onclick="mts()"
+    style="position:fixed;bottom:20px;right:20px;background:#2c3e50;color:white;padding:8px 12px;border-radius:20px;cursor:pointer;">
+    MTS
 </div>
 
+<div id="mts"
+    style="display:none;position:fixed;bottom:60px;right:20px;background:#34495e;color:white;padding:10px;border-radius:10px;">
+    🟥 Rojo - inmediato<br>
+    🟧 Naranja - 10 min<br>
+    🟨 Amarillo - 60 min<br>
+    🟩 Verde - 120 min<br>
+    🟦 Azul - 240 min
+</div>
+
+<script>
+    function mts() {
+        let p = document.getElementById('mts');
+        p.style.display = (p.style.display === 'block') ? 'none' : 'block';
+    }
+</script>
+
+<body>
+
+    <div class="contenedor">
+
+        <div class="cabecera">
+            <h1>Evaluación de Triaje</h1>
+            <p>Clasifique al paciente según la gravedad de su condición</p>
+        </div>
+
+        {{-- Mensajes --}}
+        @if(session('ok'))
+            <p class="mensaje exito">Triaje guardado correctamente.</p>
+        @endif
+
+        @if(session('error'))
+            <p class="mensaje error">No se pudo guardar el triaje.</p>
+        @endif
+
+        <div class="tarjeta-paciente">
+            <div class="info-paciente">
+                <h2>Datos del paciente</h2>
+                <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
+                <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
+                <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
+                <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
+            </div>
+
+            <div class="alerta-alergias">
+                <h3>Alergias</h3>
+                <p>Sin alergias conocidas</p>
+            </div>
+        </div>
+
+        <form action="/triaje" method="POST" class="formulario">
+            @csrf
+
+            <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
+            <section class="bloque">
+                <h3>Constantes vitales</h3>
+
+                <div class="grid-dos">
+                    <input type="number" name="tension_sistolica" placeholder="TA Sistólica">
+                    <input type="number" name="tension_diastolica" placeholder="TA Diastólica">
+                    <input type="number" name="frecuencia_cardiaca" placeholder="Frecuencia cardíaca">
+                    <input type="number" name="frecuencia_respiratoria" placeholder="Frecuencia respiratoria">
+                    <input type="number" step="0.1" name="temperatura" placeholder="Temperatura">
+                    <input type="number" name="saturacion_oxigeno" placeholder="Sat O2">
+                    <input type="number" name="glasgow" min="3" max="15" placeholder="Glasgow">
+                    <input type="number" name="eva" min="0" max="10" placeholder="Dolor EVA">
+                    <input type="number" name="glucemia" placeholder="Glucemia">
+                    <input type="number" step="0.01" name="peso" placeholder="Peso">
+                    <input type="number" step="0.01" name="talla" placeholder="Talla">
+                    <input type="datetime-local" name="hora_triaje">
+                </div>
+            </section>
+
+            <section class="bloque">
+                <h3>Observaciones clínicas</h3>
+
+                <label><input type="checkbox" name="vomitos"> Vómitos</label>
+                <label><input type="checkbox" name="deposiciones"> Deposiciones</label>
+                <label><input type="checkbox" name="diuresis"> Diuresis</label>
+
+                <textarea name="motivo_consulta" placeholder="Motivo de consulta"></textarea>
+                <textarea name="observaciones" placeholder="Observaciones"></textarea>
+            </section>
+
+            <section class="bloque">
+                <h3>Clasificación</h3>
+
+                <select name="categoria" required>
+                    <option value="">Seleccione categoría</option>
+                    <option value="Rojo">Rojo</option>
+                    <option value="Naranja">Naranja</option>
+                    <option value="Amarillo">Amarillo</option>
+                    <option value="Verde">Verde</option>
+                    <option value="Azul">Azul</option>
+                </select>
+
+                <select name="flujo" required>
+                    <option value="">Seleccione flujo</option>
+                    <option value="RCP">Box RCP</option>
+                    <option value="Nivel I">Nivel I</option>
+                    <option value="Nivel II">Nivel II</option>
+                    <option value="Traumatologia">Traumatología</option>
+                    <option value="Obstetrica">Obstétrica</option>
+                    <option value="Pediatria">Pediatría</option>
+                    <option value="Psiquiatria">Psiquiatría</option>
+                </select>
+            </section>
+
+            <div class="acciones">
+                <a href="/" class="btn volver">Volver</a>
+                <button type="submit" class="btn guardar">Confirmar triaje</button>
+            </div>
+
+        </form>
+
+    </div>
+
 </body>
+
 </html>
