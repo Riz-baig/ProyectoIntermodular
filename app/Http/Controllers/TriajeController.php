@@ -17,18 +17,22 @@ class TriajeController extends Controller
     public function guardar(Request $request)
     {
         try {
-            // Paciente fijo (igual que tenías)
+            // Paciente fijo
             $paciente_id = $request->paciente_id;
+            $triajeExistente = DB::table('triajes')
+                ->where('paciente_id', $paciente_id)
+                ->first();
 
-            DB::table('triajes')->insert([
-
-                'paciente_id' => $paciente_id,
-
+            DB::table('triajes')->updateOrInsert(['paciente_id' => $paciente_id], [
                 'usuario_id' => session('usuario')->id,
 
-                'hora_triaje' => $request->hora_triaje 
-                    ? str_replace('T', ' ', $request->hora_triaje) . ':00' 
-                    : null,
+                'hora_triaje' => $triajeExistente && $triajeExistente->hora_triaje
+                    ? $triajeExistente->hora_triaje
+                    : (
+                        $request->categoria && $request->flujo
+                        ? now()
+                        : null
+                    ),
 
                 'tension_sistolica' => $request->tension_sistolica ?: null,
                 'tension_diastolica' => $request->tension_diastolica ?: null,

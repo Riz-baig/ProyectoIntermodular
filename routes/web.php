@@ -81,7 +81,7 @@ Route::get('/', function () {
             'triajes.hora_triaje',
             DB::raw('IF(atenciones.id IS NULL, "Pendiente", "Atendido") as estado')
         )
-        ->orderByDesc('triajes.hora_triaje')
+        ->orderByDesc('pacientes.fecha_llegada')
         ->get();
 
     return view('alumno', compact('pacientes'));

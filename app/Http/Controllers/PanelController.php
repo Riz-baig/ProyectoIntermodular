@@ -17,8 +17,7 @@ class PanelController extends Controller
         $pacientes = collect(); // collect es un helper de Laravel para manejar colecciones
         $usuarioSeleccionado = null;
 
-        if ($request->has('usuario_id') && $request->usuario_id != '') 
-        {
+        if ($request->has('usuario_id') && $request->usuario_id != '') {
             $usuarioSeleccionado = $request->usuario_id;
 
             $pacientes = DB::table('pacientes')
@@ -31,7 +30,7 @@ class PanelController extends Controller
                     'triajes.hora_triaje',
                     DB::raw('IF(atenciones.id IS NULL, "Pendiente", "Atendido") as estado')
                 )
-                ->orderByDesc('triajes.hora_triaje')
+                ->orderByDesc('pacientes.fecha_llegada')
                 ->get();
         }
         return view('seguimiento', compact('pacientes', 'usuarios', 'usuarioSeleccionado'));
