@@ -30,8 +30,6 @@
 </script>
 
 <body>
-    //comentario de prueba
-
     <div class="contenedor">
 
         <div class="cabecera">
@@ -61,25 +59,27 @@
 
             <section class="bloque">
                 <h3>Anamnesis</h3>
-                <textarea name="anamnesis" rows="6"></textarea>
+                <textarea name="anamnesis" rows="6">{{ $atencion->anamnesis ?? '' }}</textarea>
             </section>
 
             <section class="bloque">
                 <h3>Diagnóstico</h3>
 
-                <input type="text" name="diagnostico_principal" placeholder="Diagnóstico principal">
+                <input type="text" name="diagnostico_principal" placeholder="Diagnóstico principal"
+                    value="{{ $atencion->diagnostico_principal ?? '' }}">
 
-                <textarea name="diagnosticos_secundarios" rows="4" placeholder="Diagnósticos secundarios"></textarea>
+                <textarea name="diagnosticos_secundarios" rows="4"
+                    placeholder="Diagnósticos secundarios">{{ $atencion->diagnosticos_secundarios ?? '' }}</textarea>
             </section>
 
             <section class="bloque">
                 <h3>Tratamiento</h3>
 
-                <textarea name="tratamiento" rows="5"></textarea>
+                <textarea name="tratamiento" rows="5">{{ $atencion->tratamiento ?? '' }}</textarea>
 
                 <h3>Plan de seguimiento</h3>
 
-                <textarea name="plan_seguimiento" rows="4"></textarea>
+                <textarea name="plan_seguimiento" rows="4">{{ $atencion->plan_seguimiento ?? '' }}</textarea>
             </section>
 
             <div class="acciones">

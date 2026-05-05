@@ -18,29 +18,48 @@ class AtencionController extends Controller
         // Obtener último triaje del paciente
         $triaje = DB::table('triajes')
             ->where('paciente_id', $id)
-            ->orderByDesc('hora_triaje')
             ->first();
 
+        $atencion = DB::table('atenciones')
+            ->where('paciente_id', $id)
+            ->first();
 
-        return view('atencion', compact('paciente', 'triaje'));
+        return view('atencion', compact('paciente', 'triaje', 'atencion'));
     }
 
     public function guardar(Request $request)
     {
         try {
+            $atencionExistente = DB::table('atenciones')
+                ->where('paciente_id', $request->paciente_id)
+                ->first();
 
             DB::table('atenciones')->updateOrInsert(
                 ['paciente_id' => $request->paciente_id],
                 [
-                    'anamnesis' => $request->anamnesis ?: null,
-                    'diagnostico_principal' => $request->diagnostico_principal ?: null,
-                    'diagnosticos_secundarios' => $request->diagnosticos_secundarios ?: null,
-                    'tratamiento' => $request->tratamiento ?: null,
-                    'plan_seguimiento' => $request->plan_seguimiento ?: null,
+                    'anamnesis' => $request->anamnesis !== null
+                        ? $request->anamnesis
+                        : ($atencionExistente->anamnesis ?? null),
+
+                    'diagnostico_principal' => $request->diagnostico_principal !== null
+                        ? $request->diagnostico_principal
+                        : ($atencionExistente->diagnostico_principal ?? null),
+
+                    'diagnosticos_secundarios' => $request->diagnosticos_secundarios !== null
+                        ? $request->diagnosticos_secundarios
+                        : ($atencionExistente->diagnosticos_secundarios ?? null),
+
+                    'tratamiento' => $request->tratamiento !== null
+                        ? $request->tratamiento
+                        : ($atencionExistente->tratamiento ?? null),
+
+                    'plan_seguimiento' => $request->plan_seguimiento !== null
+                        ? $request->plan_seguimiento
+                        : ($atencionExistente->plan_seguimiento ?? null),
                 ]
             );
 
-            return redirect('/')->with('ok', true);
+            return redirect('/panel');
 
         } catch (\Exception $e) {
             return back()->with('error', true);

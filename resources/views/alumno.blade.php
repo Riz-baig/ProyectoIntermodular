@@ -43,16 +43,6 @@
                 <p>Alta de pacientes en urgencias</p>
             </a>
 
-            <a href="/triaje" class="card">
-                <h3>Triaje</h3>
-                <p>Evaluación de gravedad</p>
-            </a>
-
-            <a href="/atencion" class="card">
-                <h3>Atención</h3>
-                <p>Diagnóstico y tratamiento</p>
-            </a>
-
             <a href="/mis-feedbacks" class="card">
                 <h3>Mis feedbacks</h3>
                 <p>Consulta las valoraciones de tu profesora</p>

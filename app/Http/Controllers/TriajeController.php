@@ -10,8 +10,11 @@ class TriajeController extends Controller
     public function ver($id)
     {
         $paciente = DB::table('pacientes')->where('id', $id)->first();
+        $triaje = DB::table('triajes')
+            ->where('paciente_id', $id)
+            ->first();
 
-        return view('triaje', compact('paciente'));
+        return view('triaje', compact('paciente', 'triaje'));
     }
 
     public function guardar(Request $request)
@@ -55,7 +58,7 @@ class TriajeController extends Controller
                 'flujo' => $request->flujo,
             ]);
 
-            return redirect('/atencion/' . $request->paciente_id);
+            return redirect('/panel/');
 
         } catch (\Exception $e) {
             return $e->getMessage();

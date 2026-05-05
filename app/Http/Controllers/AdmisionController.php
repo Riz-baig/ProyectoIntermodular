@@ -21,7 +21,7 @@ class AdmisionController extends Controller
                 'alumno_id' => session('usuario') ? session('usuario')->id : null, // Asigna el ID del alumno desde la sesión, o null si no hay sesión
             ]);
 
-            return redirect('/triaje/' . $id);
+            return redirect('/panel/');
 
 
         } catch (\Exception $e) {
