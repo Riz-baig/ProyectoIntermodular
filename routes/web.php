@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\AdmisionController;//admision
 use App\Http\Controllers\TriajeController;//triaje
 use App\Http\Controllers\AtencionController;//atencion
@@ -10,6 +11,9 @@ use App\Http\Controllers\PanelController;//panel de control para profesor
 /*use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;*/ //es para crear profesor
 
+
+Route::get('/pacientes/{id}', [PacienteController::class, 'show'])
+    ->name('pacientes.show');
 Route::get('/login', [AuthController::class, 'showLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/admision', [AdmisionController::class, 'guardar']);//admision
@@ -65,7 +69,22 @@ Route::get('/', function () {
         return redirect('/panel');
     }
 
-    return view('alumno');
+    $usuario = session('usuario');
+
+    $pacientes = DB::table('pacientes')
+        ->leftJoin('triajes', 'pacientes.id', '=', 'triajes.paciente_id')
+        ->leftJoin('atenciones', 'pacientes.id', '=', 'atenciones.paciente_id')
+        ->where('pacientes.alumno_id', $usuario->id)
+        ->select(
+            'pacientes.*',
+            'triajes.categoria',
+            'triajes.hora_triaje',
+            DB::raw('IF(atenciones.id IS NULL, "Pendiente", "Atendido") as estado')
+        )
+        ->orderByDesc('triajes.hora_triaje')
+        ->get();
+
+    return view('alumno', compact('pacientes'));
 });
 
 //admision
@@ -91,7 +110,7 @@ Route::get('/triaje', function () {
 
 
 //logout
-Route::post('/logout', function () { 
+Route::post('/logout', function () {
     Session::flush();
     return redirect('/login');
 });
