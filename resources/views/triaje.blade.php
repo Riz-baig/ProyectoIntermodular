@@ -59,7 +59,11 @@
 
             <div class="alerta-alergias">
                 <h3>Alergias</h3>
-                <p>Sin alergias conocidas</p>
+                @if($paciente->alergias)
+                    <p>{{ $paciente->alergias }}</p>
+                @else
+                    <p>Sin alergias conocidas</p>
+                @endif
             </div>
         </div>
 
