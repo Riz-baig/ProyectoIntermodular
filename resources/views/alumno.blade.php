@@ -73,7 +73,16 @@
                                 <td>{{ $p->nombre }}</td>
                                 <td>{{ $p->nhc }}</td>
 
-                                <td>{{ $p->categoria ?? 'Sin triaje' }}</td>
+                                <td>
+                                    @php
+                                        $categoria = strtolower(trim($p->categoria ?? 'gris'));
+                                    @endphp
+
+                                    <span class="badge {{ $categoria }}">
+                                        {{ $p->categoria ?? 'Sin triaje' }}
+                                    </span>
+                                </td>
+
                                 <td>{{ $p->estado }}</td>
 
                                 <td>
