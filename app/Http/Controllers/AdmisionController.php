@@ -18,10 +18,14 @@ class AdmisionController extends Controller
                 'telefono' => $request->telefono ?: null,
                 'alergias' => $request->alergias ?: null,
                 'motivo_consulta' => $request->motivo_consulta ?: null,
-                'alumno_id' => session('usuario') ? session('usuario')->id : null, // Asigna el ID del alumno desde la sesión, o null si no hay sesión
+                'alumno_id' => session('usuario_id'),
             ]);
 
-            return redirect('/panel/');
+            if (session('rol') == 'profesor') {
+                return redirect('/panel');
+            }
+
+            return redirect('/');
 
 
         } catch (\Exception $e) {

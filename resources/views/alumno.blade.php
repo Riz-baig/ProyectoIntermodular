@@ -33,7 +33,7 @@
 
     <div class="container">
 
-        <h1>Bienvenido, {{ session('usuario')->name }}</h1>
+        <h1>Bienvenido, {{ session('usuario_nombre')}}</h1>
         <p>Selecciona una opción del sistema</p>
 
         <div class="menu">

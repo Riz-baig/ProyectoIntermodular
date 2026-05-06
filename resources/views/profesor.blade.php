@@ -13,7 +13,7 @@
 
         <div class="cabecera">
             <h1>Panel de Profesor</h1>
-            <p>Bienvenido, {{ session('usuario')->name }}</p>
+            <p>Bienvenido, {{ session('usuario_nombre')}}</p>
         </div>
 
         <h2>Gestión del sistema</h2>

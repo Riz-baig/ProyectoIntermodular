@@ -68,7 +68,7 @@ class AtencionController extends Controller
 
     public function misFeedbacks()
     {
-        $alumno_id = session('usuario')->id;
+        $alumno_id = session('usuario_id');
 
         $pacientes = DB::table('pacientes')
             ->join('atenciones', 'pacientes.id', '=', 'atenciones.paciente_id')

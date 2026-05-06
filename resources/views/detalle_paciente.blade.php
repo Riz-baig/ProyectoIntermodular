@@ -54,7 +54,7 @@
             style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-bottom:20px;">
             <h2>Clasificación del triaje</h2>
 
-            @if(session('usuario')->rol == 'alumno')
+            @if(session('rol') == 'alumno')
                 <a href="/triaje/{{ $paciente->id }}" class="btn guardar">Modificar triaje</a>
             @endif
 
@@ -75,7 +75,7 @@
         <div
             style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-bottom:20px;">
             <h2>Atención médica</h2>
-            @if(session('usuario')->rol == 'alumno')
+            @if(session('rol') == 'alumno')
                 <a href="/atencion/{{ $paciente->id }}" class="btn guardar">Modificar atención</a>
             @endif
 
@@ -92,7 +92,7 @@
 
         <div class="acciones">
             <a href="javascript:history.back()" class="btn volver">Volver</a>
-            @if(session()->has('usuario') && session('usuario')->rol == 'profesor')
+            @if(session()->has('usuario_id') && session('rol') == 'profesor')
                 <a href="/seguimiento/feedback/{{ $paciente->id }}" class="btn guardar">
                     Dar feedback
                 </a>

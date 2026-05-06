@@ -50,8 +50,12 @@ Route::get('/crear-profesor', function () {
 //sesion profesor
 Route::get('/panel', function () { //dirige a la ruta del panel
 
-    if (!session()->has('usuario')) { // so no ha iniiado sesion, no deja entrar
+    if (!session()->has('usuario_id')) {
         return redirect('/login');
+    }
+
+    if (session('rol') != 'profesor') {
+        return redirect('/');
     }
 
     return view('profesor');
@@ -61,20 +65,18 @@ Route::get('/panel', function () { //dirige a la ruta del panel
 //sesion alumno
 Route::get('/', function () {
 
-    if (!session()->has('usuario')) {
+    if (!session()->has('usuario_id')) {
         return redirect('/login');
     }
 
-    if (session('usuario')->rol != 'alumno') {
+    if (session('rol') != 'alumno') {
         return redirect('/panel');
     }
-
-    $usuario = session('usuario');
 
     $pacientes = DB::table('pacientes')
         ->leftJoin('triajes', 'pacientes.id', '=', 'triajes.paciente_id')
         ->leftJoin('atenciones', 'pacientes.id', '=', 'atenciones.paciente_id')
-        ->where('pacientes.alumno_id', $usuario->id)
+        ->where('pacientes.alumno_id', session('usuario_id'))
         ->select(
             'pacientes.*',
             'triajes.categoria',
@@ -90,7 +92,7 @@ Route::get('/', function () {
 //admision
 Route::get('/admision', function () {
 
-    if (!session()->has('usuario')) {
+    if (!session()->has('usuario_id')) {
         return redirect('/login');
     }
 
@@ -101,7 +103,7 @@ Route::get('/admision', function () {
 //triaje
 Route::get('/triaje', function () {
 
-    if (!session()->has('usuario')) {
+    if (!session()->has('usuario_id')) {
         return redirect('/login');
     }
 

@@ -11,9 +11,9 @@ class AuthController extends Controller
     public function showLogin()
     {
         // Si ya está logueado
-        if (session()->has('usuario')) {
+        if (session()->has('usuario_id')) {
 
-            if (session('usuario')->rol == 'profesor') {
+            if (session('rol') == 'profesor') {
                 return redirect('/panel');
             } else {
                 return redirect('/');
@@ -23,30 +23,34 @@ class AuthController extends Controller
         return view('login');
     }
 
-    
-    
+
+
     public function login(Request $request)
     {
-        
+
         $user = DB::table('users')
             ->where('email', $request->email)
             ->first();
-    
+
         if (!$user) {
             return back()->with('error', 'Usuario no encontrado');
         }
-    
+
         if (Hash::check($request->password, $user->password)) {
-    
-            session(['usuario' => $user]);
-    
+
+            session([
+                'usuario_id' => $user->id,
+                'usuario_nombre' => $user->name,
+                'rol' => $user->rol
+            ]);
+
             if ($user->rol == 'profesor') {
                 return redirect('/panel');
             } else {
                 return redirect('/');
             }
         }
-    
+
         return back()->with('error', 'Contraseña incorrecta');
     }
 

@@ -27,7 +27,7 @@ class TriajeController extends Controller
                 ->first();
 
             DB::table('triajes')->updateOrInsert(['paciente_id' => $paciente_id], [
-                'usuario_id' => session('usuario')->id,
+                'usuario_id' => session('usuario_id'),
 
                 'hora_triaje' => $triajeExistente && $triajeExistente->hora_triaje
                     ? $triajeExistente->hora_triaje
