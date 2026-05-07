@@ -8,6 +8,7 @@ use App\Http\Controllers\AdmisionController;//admision
 use App\Http\Controllers\TriajeController;//triaje
 use App\Http\Controllers\AtencionController;//atencion
 use App\Http\Controllers\PanelController;//panel de control para profesor
+use Illuminate\Support\Facades\DB;
 /*use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;*/ //es para crear profesor
 

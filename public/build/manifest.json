@@ -1,6 +1,6 @@
 {
   "resources/css/admision.css": {
-    "file": "assets/admision-CKo6lNaU.css",
+    "file": "assets/admision-CvZfjpsC.css",
     "src": "resources/css/admision.css",
     "isEntry": true,
     "name": "admision",
@@ -9,7 +9,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-DitJVXzI.css",
+    "file": "assets/app-DX4SLkBq.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -18,12 +18,21 @@
     ]
   },
   "resources/css/atencion.css": {
-    "file": "assets/atencion-DR8FNmj-.css",
+    "file": "assets/atencion-B2FSTCVe.css",
     "src": "resources/css/atencion.css",
     "isEntry": true,
     "name": "atencion",
     "names": [
       "atencion.css"
+    ]
+  },
+  "resources/css/mts.css": {
+    "file": "assets/mts-BphozqR1.css",
+    "src": "resources/css/mts.css",
+    "isEntry": true,
+    "name": "mts",
+    "names": [
+      "mts.css"
     ]
   },
   "resources/css/panel.css": {
@@ -45,12 +54,12 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-DDZF-pVe.js",
+    "file": "assets/app-C9RdPRw2.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DitJVXzI.css"
+      "assets/app-DX4SLkBq.css"
     ]
   }
 }
