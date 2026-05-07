@@ -46,6 +46,42 @@
                 </p>
                 <p><strong>Hora triaje:</strong> {{ $triaje->hora_triaje ?? '-' }}</p>
                 <p><strong>Flujo:</strong> {{ $triaje->flujo ?? '-' }}</p>
+
+                <hr style="margin:20px 0;">
+
+                <div class="grid-dos">
+                    <p><strong>TA Sistólica:</strong> {{ $triaje->tension_sistolica ?? '-' }} </p>
+                    <p><strong>TA Diastólica:</strong> {{ $triaje->tension_diastolica ?? '-' }}</p>
+                    <p><strong>Frecuencia cardíaca:</strong> {{ $triaje->frecuencia_cardiaca ?? '-' }}</p>
+                    <p><strong>Frecuencia respiratoria:</strong>{{ $triaje->frecuencia_respiratoria ?? '-' }} </p>
+                    <p><strong>Temperatura:</strong> {{ $triaje->temperatura ?? '-' }} </p>
+                    <p><strong>Sat O2:</strong> {{ $triaje->saturacion_oxigeno ?? '-' }} </p>
+                    <p><strong>Glasgow:</strong> {{ $triaje->glasgow ?? '-' }} </p>
+                    <p><strong>Dolor EVA:</strong> {{ $triaje->eva ?? '-' }} </p>
+                    <p><strong>Glucemia:</strong> {{ $triaje->glucemia ?? '-' }} </p>
+                    <p><strong>Peso:</strong> {{ $triaje->peso ?? '-' }} </p>
+                    <p><strong>Talla:</strong>{{ $triaje->talla ?? '-' }} </p>
+                </div>
+
+                <hr style="margin:20px 0;">
+
+                <h3>Observaciones clínicas</h3>
+                <p><strong>Vómitos:</strong> {{ $triaje->vomitos ? 'Sí' : 'No' }} </p>
+
+                <p> <strong>Deposiciones:</strong>
+                    {{ $triaje->deposiciones ? 'Sí' : 'No' }} </p>
+
+                <p>
+                    <strong>Diuresis:</strong>
+                    {{ $triaje->diuresis ? 'Sí' : 'No' }}
+                </p>
+
+                <p><strong>Motivo consulta:</strong>
+                    {{ $triaje->motivo_consulta ?? '-' }}
+                </p>
+                <p><strong>Observaciones:</strong>
+                    {{ $triaje->observaciones ?? '-' }}
+                </p>
             @else
                 <p class="mensaje error">Sin triaje registrado.</p>
             @endif
