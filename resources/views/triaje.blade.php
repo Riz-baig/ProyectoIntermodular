@@ -5,32 +5,12 @@
     <meta charset="UTF-8">
     <title>Triaje - Sistema de Triaje</title>
 
-    @vite(['resources/css/app.css', 'resources/css/triaje.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/triaje.css', 'resources/js/app.js', 'resources/css/mts.css'])
 
 </head>
 
-<div onclick="mts()"
-    style="position:fixed;bottom:20px;right:20px;background:#2c3e50;color:white;padding:8px 12px;border-radius:20px;cursor:pointer;">
-    MTS
-</div>
-
-<div id="mts"
-    style="display:none;position:fixed;bottom:60px;right:20px;background:#34495e;color:white;padding:10px;border-radius:10px;">
-    🟥 Rojo - inmediato<br>
-    🟧 Naranja - 10 min<br>
-    🟨 Amarillo - 60 min<br>
-    🟩 Verde - 120 min<br>
-    🟦 Azul - 240 min
-</div>
-
-<script>
-    function mts() {
-        let p = document.getElementById('mts');
-        p.style.display = (p.style.display === 'block') ? 'none' : 'block';
-    }
-</script>
-
 <body>
+    <x-mts />
 
     <div class="contenedor">
 

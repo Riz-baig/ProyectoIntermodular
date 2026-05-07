@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/css/admision.css',
                 'resources/css/atencion.css',
                 'resources/js/app.js',
+                'resources/css/mts.css',
             ],
             refresh: true,
         }),
