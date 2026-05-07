@@ -145,12 +145,6 @@ body {
     color: white;
 }
 
-.logout-final {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 40px;
-}
-
 .logout:hover {
     background: #d93b2b;
 }
@@ -159,6 +153,12 @@ body {
     background-color: #999;
     color: white;
     opacity: 0.7;
+}
+
+.botones-final {
+    margin-top: 80px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* FORMULARIOS */

@@ -44,8 +44,9 @@
                             <th>NHC</th>
                             <th>Categoría</th>
                             <th>Estado</th>
-                            <th>Hora</th>
-                            <th>Información</th>
+                            <th>Fecha de llegada</th>
+                            <th>Feedback</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,11 +65,13 @@
                                     </span>
                                 </td>
                                 <td>
-                                    {{ $p->hora_triaje ? date('H:i', strtotime($p->hora_triaje)) : '-' }}
+                                    {{ \Carbon\Carbon::parse($p->fecha_llegada)->format('d/m/Y H:i') }}
                                 </td>
+
+                                <td>{{ $p->feedback !== null ? 'Sí' : 'No' }} </td>
+
                                 <td>
-                                    <a href="/seguimiento/paciente/{{ $p->id }}" class="btn guardar"
-                                        style="font-size:13px; padding:6px 10px;">Información</a>
+                                    <a href="/seguimiento/paciente/{{ $p->id }}" class="btn volver"> Más información</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -78,9 +81,11 @@
 
         @endif
 
-    </div>
+        <div class="botones-final">
+            <a href="/panel" class="btn volver">Volver</a>
+        </div>
 
-    <a href="/panel" class="btn volver">Volver</a>
+    </div>
 
 </body>
 

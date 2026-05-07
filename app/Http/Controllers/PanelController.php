@@ -28,6 +28,7 @@ class PanelController extends Controller
                     'pacientes.*',
                     'triajes.categoria',
                     'triajes.hora_triaje',
+                    'atenciones.feedback as feedback',
                     DB::raw('IF(atenciones.id IS NULL, "Pendiente", "Atendido") as estado')
                 )
                 ->orderByDesc('pacientes.fecha_llegada')
