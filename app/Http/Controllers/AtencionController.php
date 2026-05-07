@@ -59,7 +59,7 @@ class AtencionController extends Controller
                 ]
             );
 
-            return redirect('/panel');
+            return redirect('/seguimiento/paciente/' . $request->paciente_id);
 
         } catch (\Exception $e) {
             return back()->with('error', true);

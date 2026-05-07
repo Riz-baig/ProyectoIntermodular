@@ -91,7 +91,7 @@
         </div>
 
         <div class="acciones">
-            <a href="javascript:history.back()" class="btn volver">Volver</a>
+            <a href="/panel" class="btn volver">Volver</a>
             @if(session()->has('usuario_id') && session('rol') == 'profesor')
                 <a href="/seguimiento/feedback/{{ $paciente->id }}" class="btn guardar">
                     Dar feedback

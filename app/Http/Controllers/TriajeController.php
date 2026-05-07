@@ -58,7 +58,7 @@ class TriajeController extends Controller
                 'flujo' => $request->flujo,
             ]);
 
-            return redirect('/panel/');
+            return redirect('/seguimiento/paciente/' . $paciente_id);
 
         } catch (\Exception $e) {
             return $e->getMessage();
