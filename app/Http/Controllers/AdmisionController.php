@@ -25,7 +25,7 @@ class AdmisionController extends Controller
                 ->update([
                     'nhc' => $request->nhc,
                     'nombre' => $request->nombre,
-                    'edad' => $request->edad ?: null,
+                    'fecha_nacimiento' => $request->fecha_nacimiento ?: null,
                     'telefono' => $request->telefono ?: null,
                     'alergias' => $request->alergias ?: null,
                     'motivo_consulta' => $request->motivo_consulta ?: null,
@@ -45,6 +45,7 @@ class AdmisionController extends Controller
                 'nhc' => $request->nhc,
                 'nombre' => $request->nombre,
                 'edad' => $request->edad ?: null,
+                'fecha_nacimiento' => $request->fecha_nacimiento ?: null,
                 'telefono' => $request->telefono ?: null,
                 'alergias' => $request->alergias ?: null,
                 'motivo_consulta' => $request->motivo_consulta ?: null,

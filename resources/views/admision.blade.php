@@ -38,9 +38,11 @@
                     <input type="text" name="nombre" required value="{{ $paciente->nombre ?? '' }}">
                 </div>
 
-                <div class="grupo">
-                    <label>Edad</label>
-                    <input type="number" name="edad" value="{{ $paciente->edad ?? '' }}">
+
+                <div>
+                <label>Fecha de nacimiento</label>
+                    <input type="date" name="fecha_nacimiento"
+                        value="{{ $paciente->fecha_nacimiento ?? '' }}">
                 </div>
 
                 <div class="grupo">

@@ -32,7 +32,11 @@
             <div class="info-paciente">
                 <h2>Datos del paciente</h2>
                 <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
-                <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
+                <p><strong>Edad:</strong>
+                    {{ $paciente->fecha_nacimiento
+                        ? \Carbon\Carbon::parse($paciente->fecha_nacimiento)->age . ' años'
+                        : '-' }}
+                </p>
                 <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
                 <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
                 <p><strong>Hora triaje:</strong> {{ $triaje?->hora_triaje ?? '-' }}</p>
@@ -79,9 +83,9 @@
                     <option value="No">No</option>
                 </select>
                 <label>Deposiciones</label>
-                <input type="text" name="deposiciones" placeholder="Cantidad">
+                <input type="number" name="deposiciones" placeholder="Cantidad">
                 <label>Diuresis</label>
-                <input type="text" name="diuresis" placeholder="Cantidad">
+                <input type="number" name="diuresis" placeholder="Cantidad">
 
                 <label>Motivo de consulta</label>
                 <textarea name="motivo_consulta"></textarea>

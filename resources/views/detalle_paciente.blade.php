@@ -31,7 +31,11 @@
                     </a>
                 @endif
                 <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
-                <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
+                <p><strong>Edad:</strong>
+                    {{ $paciente->fecha_nacimiento
+                        ? \Carbon\Carbon::parse($paciente->fecha_nacimiento)->age . ' años'
+                        : '-' }}
+                </p>
                 <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
                 <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
             </div>
