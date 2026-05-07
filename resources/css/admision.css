@@ -12,3 +12,15 @@
     font-weight: bold;
     color: var(--color-principal);
 }
+
+.acciones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.acciones a,
+.acciones button {
+    width: 220px;
+    height: 60px;
+}
