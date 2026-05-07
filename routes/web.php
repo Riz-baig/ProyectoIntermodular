@@ -17,6 +17,8 @@ Route::get('/pacientes/{id}', [PacienteController::class, 'show'])
 Route::get('/login', [AuthController::class, 'showLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/admision', [AdmisionController::class, 'guardar']);//admision
+Route::get('/admision/{id}', [AdmisionController::class, 'ver']);
+Route::post('/admision/update/{id}', [AdmisionController::class, 'actualizar']);
 Route::get('/triaje/{id}', [TriajeController::class, 'ver']);//triaje
 Route::post('/triaje', [TriajeController::class, 'guardar']);//triaje
 Route::get('/atencion/{id}', [AtencionController::class, 'ver']);//atencion

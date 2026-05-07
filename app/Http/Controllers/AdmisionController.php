@@ -7,6 +7,36 @@ use Illuminate\Support\Facades\DB;
 
 class AdmisionController extends Controller
 {
+    public function ver($id)
+    {
+        $paciente = DB::table('pacientes')
+            ->where('id', $id)
+            ->first();
+
+        return view('admision', compact('paciente'));
+    }
+
+    public function actualizar(Request $request, $id)
+    {
+        try {
+
+            DB::table('pacientes')
+                ->where('id', $id)
+                ->update([
+                    'nhc' => $request->nhc,
+                    'nombre' => $request->nombre,
+                    'edad' => $request->edad ?: null,
+                    'telefono' => $request->telefono ?: null,
+                    'alergias' => $request->alergias ?: null,
+                    'motivo_consulta' => $request->motivo_consulta ?: null,
+                ]);
+
+            return redirect('/seguimiento/paciente/' . $id);
+
+        } catch (\Exception $e) {
+            return back()->with('error', true);
+        }
+    }
     public function guardar(Request $request)
     {
         try {

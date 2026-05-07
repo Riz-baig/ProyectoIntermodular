@@ -25,6 +25,11 @@
         <div class="tarjeta-paciente">
             <div class="info-paciente">
                 <h2>Datos del paciente</h2>
+                @if($esPropio)
+                    <a href="/admision/{{ $paciente->id }}" class="btn volver">
+                        Modificar datos del paciente
+                    </a>
+                @endif
                 <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
                 <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
                 <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>

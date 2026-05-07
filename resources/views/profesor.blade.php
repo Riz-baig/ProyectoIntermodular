@@ -101,13 +101,20 @@
 
         @endif
 
-        <form method="POST" action="/logout">
-            @csrf
-            <button class="btn logout">Cerrar sesión</button>
-        </form>
+        <div style="margin-top:80px; display:flex; justify-content:flex-end;">
+
+            <form method="POST" action="/logout">
+                @csrf
+
+                <button class="btn logout">
+                    Cerrar sesión
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
-
 </body>
 
 </html>

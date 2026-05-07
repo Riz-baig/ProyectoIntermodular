@@ -145,6 +145,12 @@ body {
     color: white;
 }
 
+.logout-final {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
 .logout:hover {
     background: #d93b2b;
 }
