@@ -19,18 +19,21 @@
 
         <div class="tarjeta-paciente">
             <div class="info-paciente">
-                <h2>Paciente seleccionado</h2>
+                <h2>Datos del paciente</h2>
                 <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
                 <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
                 <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
-                <p><strong>Alergias:</strong> {{ $paciente->alergias }}</p>
+                <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
+                <p><strong>Hora triaje:</strong> {{ $triaje?->hora_triaje ?? '-' }}</p>
             </div>
 
-            <div class="estado-paciente">
-                <span class="badge {{ strtolower($triaje?->categoria ?? 'gris') }}">
-                    {{ $triaje?->categoria ?? 'Sin clasificar' }}
-                </span>
-                <p><strong>Hora triaje:</strong> {{ $triaje?->hora_triaje ?? '-' }}</p>
+            <div class="alerta-alergias">
+                <h3>Alergias</h3>
+                @if($paciente->alergias)
+                    <p>{{ $paciente->alergias }}</p>
+                @else
+                    <p>Sin alergias conocidas</p>
+                @endif
             </div>
         </div>
 
@@ -45,13 +48,12 @@
             </section>
 
             <section class="bloque">
-                <h3>Diagnóstico</h3>
+                <h3>Diagnóstico principal</h3>
+                <input type="text" name="diagnostico_principal" value="{{ $atencion->diagnostico_principal ?? '' }}">
 
-                <input type="text" name="diagnostico_principal" placeholder="Diagnóstico principal"
-                    value="{{ $atencion->diagnostico_principal ?? '' }}">
-
-                <textarea name="diagnosticos_secundarios" rows="4"
-                    placeholder="Diagnósticos secundarios">{{ $atencion->diagnosticos_secundarios ?? '' }}</textarea>
+                <label>Diagnósticos secundarios</label>
+                <textarea name="diagnosticos_secundarios"
+                    rows="4">{{ $atencion->diagnosticos_secundarios ?? '' }}</textarea>
             </section>
 
             <section class="bloque">

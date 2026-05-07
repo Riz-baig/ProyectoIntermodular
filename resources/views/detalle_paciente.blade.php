@@ -22,15 +22,23 @@
         </div>
 
         {{-- Datos del paciente --}}
-        <div class="tarjeta-paciente"
-            style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-bottom:20px;">
-            <h2>Datos del paciente</h2>
-            <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
-            <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
-            <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
-            <p><strong>Teléfono:</strong> {{ $paciente->telefono ?? '-' }}</p>
-            <p><strong>Alergias:</strong> {{ $paciente->alergias ?? '-' }}</p>
-            <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta ?? '-' }}</p>
+        <div class="tarjeta-paciente">
+            <div class="info-paciente">
+                <h2>Datos del paciente</h2>
+                <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
+                <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
+                <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
+                <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
+            </div>
+
+            <div class="alerta-alergias">
+                <h3>Alergias</h3>
+                @if($paciente->alergias)
+                    <p>{{ $paciente->alergias }}</p>
+                @else
+                    <p>Sin alergias conocidas</p>
+                @endif
+            </div>
         </div>
 
         {{-- Clasificación triaje --}}

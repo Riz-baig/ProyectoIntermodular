@@ -35,6 +35,7 @@
                 <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
                 <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
                 <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
+                <p><strong>Hora triaje:</strong> {{ $triaje?->hora_triaje ?? '-' }}</p>
             </div>
 
             <div class="alerta-alergias">
@@ -66,24 +67,33 @@
                     <input type="number" name="glucemia" placeholder="Glucemia">
                     <input type="number" step="0.01" name="peso" placeholder="Peso">
                     <input type="number" step="0.01" name="talla" placeholder="Talla">
-                    <input type="datetime-local" name="hora_triaje">
+
                 </div>
             </section>
 
             <section class="bloque">
                 <h3>Observaciones clínicas</h3>
+                <label>Vómitos</label>
+                <select name="vomitos">
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+                <label>Deposiciones</label>
+                <input type="text" name="deposiciones" placeholder="Cantidad">
+                <label>Diuresis</label>
+                <input type="text" name="diuresis" placeholder="Cantidad">
 
-                <label><input type="checkbox" name="vomitos"> Vómitos</label>
-                <label><input type="checkbox" name="deposiciones"> Deposiciones</label>
-                <label><input type="checkbox" name="diuresis"> Diuresis</label>
+                <label>Motivo de consulta</label>
+                <textarea name="motivo_consulta"></textarea>
 
-                <textarea name="motivo_consulta" placeholder="Motivo de consulta"></textarea>
-                <textarea name="observaciones" placeholder="Observaciones"></textarea>
+                <label>Observaciones</label>
+                <textarea name="observaciones"></textarea>
             </section>
 
             <section class="bloque">
                 <h3>Clasificación</h3>
 
+                <label>Categoría</label>
                 <select name="categoria" required>
                     <option value="">Seleccione categoría</option>
                     <option value="Rojo">Rojo</option>
@@ -93,6 +103,7 @@
                     <option value="Azul">Azul</option>
                 </select>
 
+                <label>Flujo</label>
                 <select name="flujo" required>
                     <option value="">Seleccione flujo</option>
                     <option value="RCP">Box RCP</option>
