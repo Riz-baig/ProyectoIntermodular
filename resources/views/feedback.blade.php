@@ -33,12 +33,12 @@
                 <h2>Clasificación del triaje</h2>
                 @if($triaje)
                     <p><strong>Categoría:</strong>
-                        <span class="badge {{ strtolower($triaje->categoria ?? 'gris') }}">
-                            {{ $triaje->categoria ?? 'Sin clasificar' }}
+                        <span class="badge {{ strtolower($triaje?->categoria ?? 'gris') }}">
+                            {{ $triaje?->categoria ?? 'Sin clasificar' }}
                         </span>
                     </p>
-                    <p><strong>Hora triaje:</strong> {{ $triaje->hora_triaje ?? '-' }}</p>
-                    <p><strong>Flujo:</strong> {{ $triaje->flujo ?? '-' }}</p>
+                    <p><strong>Hora triaje:</strong> {{ $triaje?->hora_triaje ?? '-' }}</p>
+                    <p><strong>Flujo:</strong> {{ $triaje?->flujo ?? '-' }}</p>
                 @else
                     <p class="mensaje error">Sin triaje registrado.</p>
                 @endif

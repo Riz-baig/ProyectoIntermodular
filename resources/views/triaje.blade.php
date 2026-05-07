@@ -106,7 +106,7 @@
             </section>
 
             <div class="acciones">
-                <a href="{{ route('seguimiento.paciente', $triaje->paciente_id) }}" class="btn volver">
+                <a href="{{ route('seguimiento.paciente', $paciente->id) }}" class="btn volver">
                     Volver
                 </a>
                 <button type="submit" class="btn guardar">Confirmar triaje</button>

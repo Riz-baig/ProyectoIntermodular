@@ -13,7 +13,6 @@
 
         <div class="cabecera">
             <h1>Panel de seguimiento</h1>
-            <p>Bienvenido, {{ session('usuario_name') }}</p>
         </div>
 
         {{-- Desplegable de usuarios --}}

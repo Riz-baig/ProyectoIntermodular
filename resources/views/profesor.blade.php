@@ -37,6 +37,70 @@
 
         </div>
 
+        @if(isset($pacientes) && $pacientes->count())
+
+            <div class="panel-pacientes">
+
+                <h2>Tus pacientes</h2>
+
+                <table class="tabla">
+
+                    <thead>
+                        <tr>
+                            <th>Paciente</th>
+                            <th>NHC</th>
+                            <th>Categoría</th>
+                            <th>Estado</th>
+                            <th>Fecha llegada</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($pacientes as $p)
+
+                            <tr>
+
+                                <td>{{ $p->nombre }}</td>
+
+                                <td>{{ $p->nhc }}</td>
+
+                                <td>
+
+                                    @php
+                                        $categoria = strtolower(trim($p->categoria ?? 'gris'));
+                                    @endphp
+
+                                    <span class="badge {{ $categoria }}">
+                                        {{ $p->categoria ?? 'Sin triaje' }}
+                                    </span>
+
+                                </td>
+
+                                <td>{{ $p->estado }}</td>
+
+                                <td>
+                                    {{ \Carbon\Carbon::parse($p->fecha_llegada)->format('d/m/Y H:i') }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('pacientes.show', $p->id) }}" class="btn volver">
+                                        Ver
+                                    </a>
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        @endif
+
         <form method="POST" action="/logout">
             @csrf
             <button class="btn logout">Cerrar sesión</button>

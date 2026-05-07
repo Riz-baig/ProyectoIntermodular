@@ -58,6 +58,7 @@
                             <th>NHC</th>
                             <th>Categoría</th>
                             <th>Estado</th>
+                            <th>Fecha llegada</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -86,6 +87,9 @@
 
                                 <td>{{ $p->estado }}</td>
 
+                                <td>
+                                    {{ \Carbon\Carbon::parse($p->fecha_llegada)->format('d/m/Y H:i') }}
+                                </td>
                                 <td>
                                     <a href="{{ route('pacientes.show', $p->id) }}" class="btn volver">
                                         Ver

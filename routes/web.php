@@ -60,7 +60,20 @@ Route::get('/panel', function () { //dirige a la ruta del panel
         return redirect('/');
     }
 
-    return view('profesor');
+    $pacientes = DB::table('pacientes')
+        ->leftJoin('triajes', 'pacientes.id', '=', 'triajes.paciente_id')
+        ->leftJoin('atenciones', 'pacientes.id', '=', 'atenciones.paciente_id')
+        ->where('pacientes.alumno_id', session('usuario_id'))
+        ->select(
+            'pacientes.*',
+            'triajes.categoria',
+            'triajes.hora_triaje',
+            DB::raw('IF(atenciones.id IS NULL, "Pendiente", "Atendido") as estado')
+        )
+        ->orderByDesc('pacientes.fecha_llegada')
+        ->get();
+
+    return view('profesor', compact('pacientes'));
 });
 
 

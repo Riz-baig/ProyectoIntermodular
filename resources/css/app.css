@@ -149,6 +149,12 @@ body {
     background: #d93b2b;
 }
 
+.bloqueado {
+    background-color: #999;
+    color: white;
+    opacity: 0.7;
+}
+
 /* FORMULARIOS */
 label {
     display: block;

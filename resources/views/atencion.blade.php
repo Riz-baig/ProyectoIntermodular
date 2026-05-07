@@ -27,10 +27,10 @@
             </div>
 
             <div class="estado-paciente">
-                <span class="badge {{ strtolower($triaje->categoria ?? 'gris') }}">
-                    {{ $triaje->categoria ?? 'Sin clasificar' }}
+                <span class="badge {{ strtolower($triaje?->categoria ?? 'gris') }}">
+                    {{ $triaje?->categoria ?? 'Sin clasificar' }}
                 </span>
-                <p><strong>Hora triaje:</strong> {{ $triaje->hora_triaje ?? '-' }}</p>
+                <p><strong>Hora triaje:</strong> {{ $triaje?->hora_triaje ?? '-' }}</p>
             </div>
         </div>
 
@@ -65,7 +65,7 @@
             </section>
 
             <div class="acciones">
-                <a href="{{ route('seguimiento.paciente', $atencion->paciente_id) }}" class="btn volver">
+                <a href="{{ route('seguimiento.paciente', $paciente->id) }}" class="btn volver">
                     Volver
                 </a>
                 <button type="submit" class="btn guardar">Finalizar consulta</button>
