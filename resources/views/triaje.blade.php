@@ -83,9 +83,9 @@
                     <option value="No">No</option>
                 </select>
                 <label>Deposiciones</label>
-                <input type="number" name="deposiciones" placeholder="Cantidad">
+                <input type="text" name="deposiciones">
                 <label>Diuresis</label>
-                <input type="number" name="diuresis" placeholder="Cantidad">
+                <input type="text" name="diuresis">
 
                 <label>Motivo de consulta</label>
                 <textarea name="motivo_consulta"></textarea>

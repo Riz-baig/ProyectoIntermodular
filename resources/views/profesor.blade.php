@@ -34,6 +34,11 @@
                 <h3>Registrar Usuarios</h3>
                 <p>Dar de alta nuevos usuarios en el sistema</p>
             </a>
+            
+            <a href="/usuarios" class="card">
+                <h3>Ver usuarios</h3>
+                <p>Consultar todos los usuarios registrados</p>
+            </a>
 
         </div>
 

@@ -44,6 +44,11 @@ class AuthController extends Controller
                 'rol' => $user->rol
             ]);
 
+            // Obligarlo a cambiar contraseña
+            if ((int)$user->debe_cambiar_password === 1) {
+                return redirect('/cambiar-password');
+            }
+
             if ($user->rol == 'profesor') {
                 return redirect('/panel');
             } else {

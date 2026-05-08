@@ -21,7 +21,11 @@
             <div class="info-paciente">
                 <h2>Datos del paciente</h2>
                 <p><strong>Nombre:</strong> {{ $paciente->nombre }}</p>
-                <p><strong>Edad:</strong> {{ $paciente->edad }}</p>
+                <p><strong>Edad:</strong>
+                    {{ $paciente->fecha_nacimiento
+                        ? \Carbon\Carbon::parse($paciente->fecha_nacimiento)->age . ' años'
+                        : '-' }}
+                </p>
                 <p><strong>NHC:</strong> {{ $paciente->nhc }}</p>
                 <p><strong>Motivo de consulta:</strong> {{ $paciente->motivo_consulta }}</p>
                 <p><strong>Hora triaje:</strong> {{ $triaje?->hora_triaje ?? '-' }}</p>
