@@ -75,4 +75,45 @@ class AuthController extends Controller
 
         return redirect('/login')->with('success', 'Usuario creado correctamente');
     }
+
+    public function showCambiarPassword()
+    {
+        if (!session()->has('usuario_id')) {
+            return redirect('/login');
+        }
+
+        return view('cambiar-password');
+    }
+
+    public function cambiarPassword(Request $request)
+    {
+        if (!session()->has('usuario_id')) {
+            return redirect('/login');
+        }
+
+        // Validar que las contraseñas coincidan
+        if ($request->password !== $request->password2) {
+            return back()->with('error', 'Las contraseñas no coinciden');
+        }
+
+        // Validar longitud mínima
+        if (strlen($request->password) < 6) {
+            return back()->with('error', 'La contraseña debe tener al menos 6 caracteres');
+        }
+
+        // Actualizar contraseña en la BD
+        DB::table('users')
+            ->where('id', session('usuario_id'))
+            ->update([
+                'password' => Hash::make($request->password),
+                'debe_cambiar_password' => 0 // Marcar como ya cambió
+            ]);
+
+        // Redirigir según el rol
+        if (session('rol') == 'profesor') {
+            return redirect('/panel')->with('success', 'Contraseña cambiada correctamente');
+        } else {
+            return redirect('/')->with('success', 'Contraseña cambiada correctamente');
+        }
+    }
 }

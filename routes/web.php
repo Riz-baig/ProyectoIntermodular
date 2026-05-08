@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Hash;
 Route::get('/pacientes/{id}', [PacienteController::class, 'show'])->name('pacientes.show');
 Route::get('/login', [AuthController::class, 'showLogin']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/cambiar-password', [AuthController::class, 'showCambiarPassword'])->name('cambiar-password');
+Route::post('/cambiar-password', [AuthController::class, 'cambiarPassword'])->name('cambiar-password.post');
 Route::post('/admision', [AdmisionController::class, 'guardar']);//admision
 Route::get('/admision/{id}', [AdmisionController::class, 'ver']);
 Route::post('/admision/update/{id}', [AdmisionController::class, 'actualizar']);
