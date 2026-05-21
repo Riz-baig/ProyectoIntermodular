@@ -20,7 +20,7 @@ COPY . .
 RUN composer install
 
 # Exponer puerto
-EXPOSE 10000
+EXPOSE 8080
 
 # Arrancar servidor + migraciones
 CMD ["sh", "-c", "php artisan view:clear && php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php -S 0.0.0.0:8080 -t public"]
