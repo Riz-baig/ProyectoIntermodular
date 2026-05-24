@@ -42,11 +42,20 @@
 
         </div>
 
-        @if(isset($pacientes) && $pacientes->count())
+        @if(isset($pacientes))
 
             <div class="panel-pacientes">
 
                 <h2>Tus pacientes</h2>
+
+                <div class="busqueda">
+                    <form method="GET" action="/panel">
+                        <label for="buscar" class="sr-only">Buscar paciente</label>
+                        <input type="text" id="buscar" name="buscar" placeholder="Buscar por nombre o NHC" value="{{ request('buscar') }}">
+                        <button type="submit" class="btn buscar-btn">Buscar</button>
+                        <a href="/" class="btn volver">Limpiar</a>
+                    </form>
+                </div>
 
                 <table class="tabla">
 
@@ -63,43 +72,37 @@
 
                     <tbody>
 
-                        @foreach($pacientes as $p)
+                    @if($pacientes->count())
+                    @foreach($pacientes as $p)
+                        <tr>
+                            <td>{{ $p->nombre }}</td>
+                            <td>{{ $p->nhc }}</td>
+                            <td>
+                                @php
+                                    $categoria = strtolower(trim($p->categoria ?? 'gris'));
+                                @endphp
+                                <span class="badge {{ $categoria }}">
+                                    {{ $p->categoria ?? 'Sin triaje' }}
+                                </span>
+                            </td>
+                            <td>{{ $p->estado }}</td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($p->fecha_llegada)->format('d/m/Y H:i') }}
+                            </td>
+                            <td>
+                                <a href="{{ route('pacientes.show', $p->id) }}" class="btn volver">Ver</a>
+                            </td>
+                        </tr>
+                    @endforeach
 
-                            <tr>
-
-                                <td>{{ $p->nombre }}</td>
-
-                                <td>{{ $p->nhc }}</td>
-
-                                <td>
-
-                                    @php
-                                        $categoria = strtolower(trim($p->categoria ?? 'gris'));
-                                    @endphp
-
-                                    <span class="badge {{ $categoria }}">
-                                        {{ $p->categoria ?? 'Sin triaje' }}
-                                    </span>
-
-                                </td>
-
-                                <td>{{ $p->estado }}</td>
-
-                                <td>
-                                    {{ \Carbon\Carbon::parse($p->fecha_llegada)->format('d/m/Y H:i') }}
-                                </td>
-                                <td>
-                                    <a href="{{ route('pacientes.show', $p->id) }}" class="btn volver">
-                                        Ver
-                                    </a>
-                                </td>
-
-                            </tr>
-
-                        @endforeach
-
-                    </tbody>
-
+                    @else
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:20px;">
+                            No se encontraron pacientes
+                        </td>
+                    </tr>
+                @endif
+                </tbody>
                 </table>
 
             </div>
@@ -111,7 +114,6 @@
                 @csrf
                 <button class="btn logout">Cerrar sesión</button>
             </form>
-
         </div>
     </div>
 </body>

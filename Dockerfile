@@ -1,6 +1,6 @@
 FROM php:8.2-cli
 
-# Instalar dependencias
+# Instalar dependencias, unzip: descomprime, controla versiones transfiere datos soporte para zip librerias postgres
 RUN apt-get update && apt-get install -y \
     unzip \
     git \
